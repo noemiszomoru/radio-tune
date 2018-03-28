@@ -1,0 +1,9 @@
+<input id="fileUploadControl" [style.display]="'none'" type="file" (change)="handleFileInput($event.target.files)">
+<button class="circle-button" onclick="document.getElementById('fileUploadControl').click();">+</button>
+
+<div class="covers">
+    <div *ngFor="let cover of covers" class="cover cover-id-{{ cover.id }}" (click)="onSelect(cover)" [class.selected]="selectedcover == cover">
+        <div class="coverImage" [style.background-image]="getBackground(cover.id)">
+        </div>
+    </div>
+</div>

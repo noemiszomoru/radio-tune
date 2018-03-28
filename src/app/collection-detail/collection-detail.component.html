@@ -1,0 +1,12 @@
+<div class="dialog" *ngIf="collection" [class.open]="collection">
+  <h2>{{ collection.name | uppercase }} Details</h2>
+
+  <input type="hidden" value="{{collection.id}}" />
+
+  <div class="cover" style="background-image: url('{{ collection.image }}');"></div>
+
+  <div>
+      <input type="text" [(ngModel)]="collection.name" placeholder="Name ..." />
+  </div>
+
+  <button class="button" (click)="collection = null">Close</button>

@@ -1,0 +1,17 @@
+<div class="collections">
+  <div *ngFor="let collection of collections" class="collection collection-id-{{ collection.id }}" (click)="onSelect(collection)"
+  [class.selected]="selectedCollection == collection"
+  >
+    <div class="cover" style="background-image: url('{{ collection.cover }}');">
+    </div>
+    <div class="name">{{ collection.name }}</div>
+  </div>
+</div>
+
+<app-collection-detail [collection]="selectedCollection" (coverChanged)="onCoverSelect($event)"></app-collection-detail>
+
+<div class="cover-picker"
+[class.open]="selectedCover"
+>
+  <app-covers [cover]="selectedCover"></app-covers>
+</div>

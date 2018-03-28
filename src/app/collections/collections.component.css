@@ -1,0 +1,45 @@
+.collection {
+    display: inline-block;
+    background-position: center;
+    margin: 10px;
+}
+
+.collection .cover {
+    width: 256px;
+    height: 256px;
+    border: 1px solid #999;
+    background: url('/assets/cover.png') no-repeat;
+    background-size: 100%;
+}
+
+.collection .name {
+    max-width: 256px;
+    overflow: hidden;
+    max-height: 22px;
+    text-align: center;
+}
+
+.collection.selected .cover  {
+    border: 1px solid #ccc;
+    box-shadow:0 10px 10px 0 rgba(0,0,0,0.2);
+}
+
+.collection .input-text  {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.cover-picker {
+    display: none;
+    position: fixed;
+    top: calc(100%-256px);
+    width: 100%;
+    height: 320px;
+    background: #fff;
+    box-shadow:0 10px 10px 0 rgba(0,0,0,0.2);
+}
+
+.cover-picker.open {
+    display: block;
+}
