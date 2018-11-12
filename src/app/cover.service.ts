@@ -17,8 +17,12 @@ export class CoverService {
     private messageService: MessageService) { }
 
   getCovers(): Observable<Cover[]> {
-    this.messageService.add('Covers loading ...');
     const url = `${this.restPath}/covers`;
+    return this.http.get<Cover[]>(url);
+  }
+
+  getCoverById(id: number): Observable<Cover> {
+    const url = `${this.restPath}/cover/${id}`;
     return this.http.get<Cover[]>(url);
   }
 

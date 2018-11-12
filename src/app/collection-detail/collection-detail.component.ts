@@ -1,10 +1,10 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Collection } from '../entities/collection';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { CollectionService } from '../collection.service';
 import { Cover } from '../entities/cover';
-import { EventEmitter } from 'protractor';
+import { CoverService } from '../cover.service';
 
 @Component({
   selector: 'app-collection-detail',
@@ -13,13 +13,16 @@ import { EventEmitter } from 'protractor';
 })
 export class CollectionDetailComponent implements OnInit {
 
-  @Input() collection: Collection;
+  @Input()
+  collection: Collection;
 
-  @Output() coverChanged: EventEmitter;
+  @Output()
+  coverChanged: EventEmitter<number>;
 
   constructor(private route: ActivatedRoute,
     private collectionService: CollectionService,
-    private location: Location
+    private location: Location,
+    private coverService: CoverService,
   ) { }
 
   ngOnInit() {
@@ -29,7 +32,9 @@ export class CollectionDetailComponent implements OnInit {
   getCollection(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.collectionService.getCollection(id).subscribe(collection => this.collection = collection);
+  }
 
+  changeCover(): void {
     this.coverChanged.emit(this.collection.cover);
   }
 

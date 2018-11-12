@@ -1,5 +1,5 @@
 'use strict';
-module.exports = function(app) {
+module.exports = function (app) {
   var radioController = require('../controllers/RadioController');
 
   // Collections routes
@@ -32,5 +32,12 @@ module.exports = function(app) {
   app.route('/song/:id')
     .get(radioController.getSong)
     .put(radioController.saveSong);
+
+  // General routes
+  app.route('/collection-songs/{id}')
+    .get(radioController.getCollectionSongs)
+
+  app.route('/playlist')
+    .get(radioController.getPlaylist)
 
 };
