@@ -1,7 +1,7 @@
 var config = {};
 
 config.songsPaths = [
-    "C:\\Users\\florentin.szomoru\\Music"
+    "C:\\Users\\zmoky\\Music"
 ];
 
 

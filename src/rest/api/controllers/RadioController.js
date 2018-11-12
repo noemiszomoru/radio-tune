@@ -157,16 +157,16 @@ exports.saveCover = function (req, res) {
         const coverFileName = coverId + "." + files.fileUpload.name.toLowerCase().substr(files.fileUpload.name.lastIndexOf('.') + 1);
 
         var newpath = path.normalize(COVER_DIR + "\\" + coverFileName);
-        fs.rename(oldpath, newpath, function (err) {
-            if (err) throw err;
 
-            covers.push({
-                id: coverId,
-                name: coverFileName
-            });
-
-            saveCovers();
+        fs.copyFileSync(oldpath, newpath);
+        fs.unlinkSync(oldpath);
+        
+        covers.push({
+            id: coverId,
+            name: coverFileName
         });
+
+        saveCovers();
 
         exports.getCovers(req, res);
     });

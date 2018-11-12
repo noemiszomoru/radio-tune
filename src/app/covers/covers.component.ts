@@ -21,7 +21,7 @@ export class CoversComponent implements OnInit {
 
   selectedCover: Cover;
 
-  cover: Cover;
+  cover: Cover = null;
 
   covers: Cover[];
 

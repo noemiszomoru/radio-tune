@@ -21,7 +21,7 @@ export class CoverService {
     return this.http.get<Cover[]>(url);
   }
 
-  getCoverById(id: number): Observable<Cover> {
+  getCoverById(id: number): Observable<Cover[]> {
     const url = `${this.restPath}/cover/${id}`;
     return this.http.get<Cover[]>(url);
   }
